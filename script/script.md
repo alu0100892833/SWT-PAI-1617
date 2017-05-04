@@ -71,6 +71,31 @@ Si queremos hacer uso de SWT en nuestro proyecto, tenemos que importar manualmen
 
 La principal parte negativa de todo esto, aparte de tener que realizar más operaciones que para instalar una librería normal, como ocurría con AssertJ, por ejemplo, es que necesitamos mantener abierto el proyecto de SWT constantemente en nuestro espacio de trabajo.
 
+###### EJECUTAR AQUÍ EL PRIMER EJEMPLO DE HOLA MUNDO
+
+---
+
+### 6. LOS WIDGETS
+
+![Widgets](img/widgets.png)
+
+Los widgets de SWT se encuentran en los paquetes `org.eclipse.swt.widgets` y `org.eclipse.swt.custom`, y todas ellas son clases hijas o de la clase `Widget` o de la clase `Control`. Funcionan de una forma similar a los contenedores y elementos principales que hemos visto en SWING, pero se construyen indicando cuál es el widget "padre" que los contiene. SWING, en cambio, define directamente sus elementos y luego introduce unos dentro de otros.
+
+Entonces, cada vez que se define un determinado widget, su primer parámetro debe ser el widget que lo va a contener. El segundo parámetro hace referencia a los llamados `stylebits`. Estos, dependiendo del valor que tomen, le otorgan al widget una apariencia y comportamiento diferente. Los valores vienen predefinidos como constantes públicas de la clase SWT.
+
+Por ejemplo, los siguientes constructores generan un botón push y un botón checkbox. Ambos se introducen dentro de la componente `shell`. La variación, como se puede ver, está en el valor del _stylebit_:
+
+```java
+Button pushButton = new Button(shell, SWT.PUSH);
+Button checkBox = new Button(shell, SWT.CHECK);
+```
+
+
+
+
+
+
+
 
 
 
