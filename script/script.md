@@ -65,11 +65,9 @@ Si queremos hacer uso de SWT en nuestro proyecto, tenemos que importar manualmen
 
 1. Lo primero es ir a la página de descarga de SWT.
 2. Seleccionamos la última versión estable y luego, en la siguiente página, hacemos scroll hasta abajo. Deberían aparecer las versiones para los diferentes sistemas operativos. Descargamos el `.zip` correspondiente al sistema en el que vayamos a desarrollar.
-3. Los siguientes pasos son bastante distintos a como se suelen importar dependencias. Lo primero que hay que hacer es importar el `.zip` a eclipse como **proyecto**. Seleccionamos `File > Import > Existing Projects into Workspace` y seleccionamos el `.zip` descargado.
-4. El proyecto de SWT se importará en nuestro espacio de trabajo de Eclipse. Acto seguido, se puede añadir como dependencia a otros proyectos abiertos de nuestro espacio de trabajo. Pinchamos click derecho y abrimos `Properties`. En la sección `Java Build Path` vamos a la pestaña `Projects` y añadimos el proyecto SWT importado.
-5. Después de esto, se podrán utilizar perfectamente las librerías de SWT.
-
-La principal parte negativa de todo esto, aparte de tener que realizar más operaciones que para instalar una librería normal, como ocurría con AssertJ, por ejemplo, es que necesitamos mantener abierto el proyecto de SWT constantemente en nuestro espacio de trabajo.
+3. Los siguientes pasos son bastante similares a como se suelen importar dependencias. Descomprimimos el fichero `.zip` descargado. Veremos un archivo `swt.jar`; ese es el que nos interesa.
+4. Vamos a las propiedades de nuestro proyecto pulsando click derecho sobre el mismo y vamos a la sección `Java Build Path`. En la pestaña `Libraries > Add JARs` si hemos copiado el archivo anteriormente mencionado dentro de nuestro proyecto, o `Libraries > Add External JARs` si lo hemos dejado fuera del mismo.
+5. Pulsamos `Apply` y todo debería estar listo.
 
 ###### EJECUTAR AQUÍ EL PRIMER EJEMPLO DE HOLA MUNDO
 
@@ -79,7 +77,22 @@ La principal parte negativa de todo esto, aparte de tener que realizar más oper
 
 ![Widgets](img/widgets.png)
 
-Los widgets de SWT se encuentran en los paquetes `org.eclipse.swt.widgets` y `org.eclipse.swt.custom`, y todas ellas son clases hijas o de la clase `Widget` o de la clase `Control`. Funcionan de una forma similar a los contenedores y elementos principales que hemos visto en SWING, pero se construyen indicando cuál es el widget "padre" que los contiene. SWING, en cambio, define directamente sus elementos y luego introduce unos dentro de otros.
+Los widgets de SWT se encuentran en los paquetes `org.eclipse.swt.widgets` y `org.eclipse.swt.custom`, y todas ellas son clases hijas o de la clase `Widget` o de la clase `Control`. Tenemos que destacar principalmente dos tipos de widgets: `Display` y `Shell`. El primero representa la conexión entre SWT y el sistema operativo: implementa el bucle de detección de eventos y provee información al resto de widgets acerca del sistema operativo.
+
+`Shell`, por su parte, representa una ventana. Posee varios métodos muy similares a los de la clase JFrame de SWING, como puede ser `setText()`, `setSize()` o `pack()`. Para hacerla visible en pantalla, se utiliza el método `open()`.
+
+Hay una serie de líneas de código muy importantes que se tienen que escribir en todo programa que use SWT. Este código activa el bucle principal de eventos con el sistema operativo y lo mantiene mientras la ventana no se haya cerrado. Una vez se cierra, se liberan los recursos proporcionados por el sistema operativo.
+
+```java
+while (!shell.isDisposed()) {
+  if (!display.readAndDispatch()) {
+    display.sleep();
+  }
+}
+display.dispose();
+```
+
+El resto de widgets de una forma similar a los contenedores y elementos principales que hemos visto en SWING, pero se construyen indicando cuál es el widget "padre" que los contiene. SWING, en cambio, define directamente sus elementos y luego introduce unos dentro de otros. El único widget que no tiene que especificar a su padre al ser definido es `Display`, pues su padre siempre es el sistema operativo.
 
 Entonces, cada vez que se define un determinado widget, su primer parámetro debe ser el widget que lo va a contener. El segundo parámetro hace referencia a los llamados `stylebits`. Estos, dependiendo del valor que tomen, le otorgan al widget una apariencia y comportamiento diferente. Los valores vienen predefinidos como constantes públicas de la clase SWT.
 

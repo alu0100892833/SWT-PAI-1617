@@ -11,7 +11,6 @@
 5. How to use it.
     * Through Eclipse or manually, creating a `lib` folder and adding it to the _classpath_ of the project.
 6. **Basic elements (Display, Shell, main widgets, basic containers...)**
-7. Creating a simple Eclipse plug-in using SWT.
 8. Creating a Java application using SWT.
 9. Positioning widgets.
 10. A bit more complex examples.
