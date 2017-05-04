@@ -3,7 +3,7 @@
 ### AUTHORS
 
 * Óscar Darias Plasencia, alu0100892833
-* Sergio García de la Iglesia, alu0100
+* Sergio García de la Iglesia, alu0100892260
 
 ### REFERENCES
 
@@ -12,3 +12,4 @@
 * [Wikipedia](https://es.wikipedia.org/wiki/SWT)
 * [Eclipse Documentation about SWT](https://www.eclipse.org/swt/)
 * [ZetCode Tutorial](http://zetcode.com/gui/javaswt/)
+* [SWT vs SWING](https://www.slideshare.net/saratorkey/swt-vs-swing)
