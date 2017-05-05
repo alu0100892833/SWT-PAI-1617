@@ -31,7 +31,7 @@ public class QuitButtonEx {
         shell.setLayout(layout);
 
         Button quitBtn = new Button(shell, SWT.PUSH);
-        quitBtn.setText("Quit");
+        quitBtn.setText("QUIT");
         quitBtn.setLayoutData(new RowData(80, 30));
 
         quitBtn.addSelectionListener(new SelectionAdapter() {

@@ -69,7 +69,9 @@ Si queremos hacer uso de SWT en nuestro proyecto, tenemos que importar manualmen
 4. Vamos a las propiedades de nuestro proyecto pulsando click derecho sobre el mismo y vamos a la sección `Java Build Path`. En la pestaña `Libraries > Add JARs` si hemos copiado el archivo anteriormente mencionado dentro de nuestro proyecto, o `Libraries > Add External JARs` si lo hemos dejado fuera del mismo.
 5. Pulsamos `Apply` y todo debería estar listo.
 
-###### EJECUTAR AQUÍ EL PRIMER EJEMPLO DE HOLA MUNDO
+---
+**EJECUTAR AQUÍ EL PRIMER EJEMPLO DE HOLA MUNDO**
+---
 
 ---
 
@@ -103,7 +105,58 @@ Button pushButton = new Button(shell, SWT.PUSH);
 Button checkBox = new Button(shell, SWT.CHECK);
 ```
 
+---
+**MOSTRAR EJEMPLO DEL BOTÓN QUIT**
+---
 
+Esto no se por que no funciona.
+```Un apunte sobre el programa anterior: vamos a aprovechar para introducir los mnemónicos. Estos son atajos de teclado que activan un widget de la aplicación, si este lo soporta. Los _labels_, _buttons_ y _menu items_ permiten su uso.
+
+Un mnemónico se crea añadiendo el carácter `&` al título del widget, delante de la letra que queremos que haga las veces de mnemónico. Por ejemplo, voy a hacerlo sobre el ejemplo anterior. Si al establecer el título del botón le añadimos el símbolo ampersand al inicio, podremos disparar las acciones del botón mediante un atajo de teclado: `CTRL+Q` en Windows y Linux, y `CMD+Q` en el caso de Mac.```
+
+
+```java
+Button quitBtn = new Button(shell, SWT.PUSH);
+quitBtn.setText("&Quit");
+```
+
+---
+
+### 7. CREANDO APLICACIONES INTERACTIVAS CON SWT
+
+**BUEN MOMENTO PARA QUE AQUÍ SERGIO PRESENTE SU PROGRAMA CON TODOS LOS ELEMENTOS EN UNA VENTANA, PARA IR ENSEÑÁNDOLOS**
+
+---
+
+### 8. POSICIONAMIENTO DE LOS WIDGETS
+
+Por supuesto, tenemos muchos widgets a nuestra disposición, pero no nos sirven de nada si no somos capaces de distribuirlos alrededor de la interfaz de la forma en la que nosotros queremos. En SWING, los contenedores como `JPanel` o `JFrame` tenían los _layouts_, y también los tenemos en SWT, aunque son ligeramente diferentes.
+
+Evidentemente, establecerle un _layout_ a un botón no es precisamente útil, ya que en su interior no vamos a situar nada. Estos se establecen para los contenedores. `Composite` es un contenedor de SWT para situar en su interior widgets hijos en una estructura determinada. Esta estructura se define con el método `setLayout()`.
+
+`Shell`, la ventana, es un ejemplo de `Composite`, que no tiene un _layout_ definido por defecto, sino que si no se especifica, realiza posicionamiento absoluto. Este viene a ser un posicionamiento manual, a pelo, indicando directamente la posición del widget dentro de la interfaz mediante píxeles. Esto hace que, al redimensionar la ventana, los widgets no cambien de posición, y nos deja sin garantías ningunas de que la aplicación luzca igual de bien en diferentes plataformas. Además, una simple modificación como el cambiar la fuente ya puede dejar la interfaz patas arriba. Por ello, es un tipo de posicionamiento que no suele utilizarse, salvo que estés desarrollando un ejemplo puntual o algo así. Se utilizan los métodos `setSize()`, `setLocation()` y `setBounds()`.
+
+---
+**EJEMPLO DE POSICIONAMIENTO ABSOLUTO**
+---
+
+* **FillLayout**
+
+Este tipo de estructura es la más simple y divide el espacio disponible de forma igualitaria para todos los widgets. Puede repartirles el espacio de forma horizontal, usando el _stylebit_ `SWT.HORIZONTAL`, o verticalmente (`SWT.VERTICAL`). También permite especificar la separación entre los widgets mediante su atributo `spacing` y el margen de los mismos con respecto al contenedor con los atributos `marginWidth` y `marginHeight`.
+
+---
+
+### 9. UN EJEMPLO UN POCO MÁS COMPLICADO
+
+**MOSTRAMOS EL EJEMPLO DEL CONVERSOR DE MONEDAS**
+
+---
+
+### 10. PROGRAMACIÓN ORIENTADA A EVENTOS CON SWT
+
+---
+
+### 11. EJEMPLO FINAL
 
 
 
