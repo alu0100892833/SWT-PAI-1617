@@ -144,6 +144,15 @@ Evidentemente, establecerle un _layout_ a un botón no es precisamente útil, ya
 
 Este tipo de estructura es la más simple y divide el espacio disponible de forma igualitaria para todos los widgets. Puede repartirles el espacio de forma horizontal, usando el _stylebit_ `SWT.HORIZONTAL`, o verticalmente (`SWT.VERTICAL`). También permite especificar la separación entre los widgets mediante su atributo `spacing` y el margen de los mismos con respecto al contenedor con los atributos `marginWidth` y `marginHeight`.
 
+* **RowLayout**
+
+
+* **GridLayout**
+
+
+* **FormLayout**?
+
+
 ---
 
 ### 9. UN EJEMPLO UN POCO MÁS COMPLICADO
