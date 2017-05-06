@@ -144,14 +144,31 @@ Evidentemente, establecerle un _layout_ a un botón no es precisamente útil, ya
 
 Este tipo de estructura es la más simple y divide el espacio disponible de forma igualitaria para todos los widgets. Puede repartirles el espacio de forma horizontal, usando el _stylebit_ `SWT.HORIZONTAL`, o verticalmente (`SWT.VERTICAL`). También permite especificar la separación entre los widgets mediante su atributo `spacing` y el margen de los mismos con respecto al contenedor con los atributos `marginWidth` y `marginHeight`.
 
+---
+**EJEMPLO DE FILLLAYOUT**
+---
+
+Antes de seguir con las otras tres distribuciones que vamos a ver, tenemos que revisar el concepto de _layout data_. En SWT, cada widget que incluyamos en nuestra interfaz puede tener una serie de ajustes específicos para su posicionamiento, por medio de objetos que podemos asociarles. Estos objetos son los _layout data_ y tenemos varios. Por ejemplo, para el GridLayout, que ahora lo veremos, tenemos los objetos GridData. Podemos definir el posicionamiento del widget, su orientación dentro de la sección que ocupa, los márgenes que tiene con respecto a otros elementos...
+
 * **RowLayout**
 
+Esta distribución es muy similar a `FillLayout`, en el sentido de que distribuye los componentes en una fila (`SWT.HORIZONTAL`) o en una columna (`SWT.VERTICAL`). La diferencia está en que no reparte necesariamente el espacio de forma equitativa entre sus elementos, sino que nos da la posibilidad de manejar diversos parámetros para que cada widget tenga las dimensiones, margen y separación que deseemos. Estos parámetros se manejan utilizando objetos RowData que se asocian a los widgets.
+
+---
+**EJEMPLO DE ROWLAYOUT**
+---
 
 * **GridLayout**
 
+El GridLayout ya lo conocemos de SWING, aunque este no es exactamente el mismo. Este es propio del paquete de `swt`, pero la idea es exactamente la misma: distribuir los elementos en una matriz con un número de filas y columnas dado. Además, disponemos de algunos parámetros extra para hacer que un determinado widget ocupe más de una celda, y el múltiples direcciones.
 
-* **FormLayout**?
+* **FormLayout**
 
+Por último, tenemos `FormLayout`, una distribución bastante útil que permite relacionar anclar a cada widget en posiciones determinadas del espacio de su contenedor. Para hacer esto, se crean lo que se llaman objetos `FormAttachment` y se asocian a los parámetros de los FormData.
+
+---
+**EXPLICAR USANDO EL EJEMPLO DE FORMLAYOUT**
+---
 
 ---
 

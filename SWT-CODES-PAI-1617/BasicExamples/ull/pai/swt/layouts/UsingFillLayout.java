@@ -13,12 +13,8 @@ public class UsingFillLayout {
 
     private Image infoPicture;
 
-    public UsingFillLayout(Display display) {  
-        initUI(display);
-    }
-
-    private void initUI(Display display) {
-        Shell shell = new Shell(display);
+    public UsingFillLayout(Display display) { 
+        Shell shell = new Shell(display); 
         FillLayout layout = new FillLayout();
         layout.marginHeight = 5;
         layout.marginWidth = 5;

@@ -19,11 +19,7 @@ import org.eclipse.swt.widgets.Shell;
 public class QuitButtonEx {
 
     public QuitButtonEx(Display display) {
-        initUI(display);
-    }
-
-    private void initUI(Display display) {
-        Shell shell = new Shell(display, SWT.SHELL_TRIM | SWT.CENTER);
+        Shell shell = new Shell(display, SWT.SHELL_TRIM); 
         
         RowLayout layout = new RowLayout();
         layout.marginLeft = 50;

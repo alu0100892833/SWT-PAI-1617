@@ -8,12 +8,8 @@ import org.eclipse.swt.widgets.Shell;
 
 public class AbsolutePositioning {
  
-    public AbsolutePositioning(Display display) {
-        initUI(display);
-    }
-
-    private void initUI(Display display) {
-        Shell shell = new Shell(display, SWT.SHELL_TRIM | SWT.CENTER);
+    public AbsolutePositioning(Display display) {  
+        Shell shell = new Shell(display);
         
         Button btn1 = new Button(shell, SWT.PUSH);
         btn1.setText("Used setBounds()");
