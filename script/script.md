@@ -1,5 +1,4 @@
 # STANDARD WIDGET TOOLKIT
-## GUIÓN
 
 ---
 
@@ -9,21 +8,13 @@ SWT, del inglés _Standard Widget Toolkit_ es un conjunto de componentes para co
 
 ---
 
-### 2. LAS LIBRERÍAS DE ECLIPSE
-
-A día de hoy todos sabemos perfectamente lo que es un paquete en Java. Más allá de poder crear nuestros propios paquetes, más del 50% del código que utilizamos en cada programa no es realmente nuestro, sino que las estructuras más básicas se encuentran en algún paquete disponible públicamente. Por ejemplo, el paquete `java.util` para las colecciones, o `java.io` para el manejo de ficheros en la entrada-salida.
-
-Eclipse también pone a disposición de los desarrolladores sus propias librerías por medio del paquete `org.eclipse`. Dentro del mismo encontramos `org.eclipse.swt`. Estas librerías no se encuentran en el propio compilador de Java, como las anteriormente mencionadas, sino que se tienen que instalar manualmente.
-
----
-
-### 3. RAZONES DE SU EXISTENCIA
+### 2. RAZONES DE SU EXISTENCIA
 
 SWT recupera la idea original de la biblioteca AWT de utilizar componentes nativos, con lo que adopta un estilo más consistente entre todas las plataformas, pero a la vez trata de no caer en las limitaciones de estas. La biblioteca SWING está codificada enteramente en Java y funciona bastante bien, pero algunos desarrolladores la acusan de no ofrecer una experiencia idéntica a la de una aplicación nativa.
 
 Entonces surge SWT con el objetivo de mantenerse a un nivel más cercano al sistema operativo, y por ende a la librería AWT. El precio a pagar por esto es la dependencia a nivel visual del sistema operativo sobre el que se ejecuta la aplicación.
 
-SWT utiliza componentes nativos siempre que sea posible, al igual que AWT. La diferencia es que SWT provee al desarrollador de una mayor cantidad de estos, comúnmente llamados widgets. Esto es debido a que si un widget no está disponible nativamente para una plataforma, SWT lo emula internamente.
+SWT recupera la idea original de AWT de utilizar componentes nativos, al menos siempre que sea posible. La diferencia es que SWT provee al desarrollador de una mayor cantidad de estos, comúnmente llamados widgets. Esto es debido a que si un widget no está disponible nativamente para una plataforma, SWT lo emula internamente.
 
 Los usos que se le dan a SWT son dos:
 
@@ -32,7 +23,7 @@ Los usos que se le dan a SWT son dos:
 
 ---
 
-### 4. SWT vs SWING
+### 3. SWT vs SWING
 
 Las ventajas de SWING con respecto a SWT son:
 
@@ -59,6 +50,14 @@ Por contra:
 
 ---
 
+### 4. LAS LIBRERÍAS DE ECLIPSE
+
+A día de hoy todos sabemos perfectamente lo que es un paquete en Java. Más allá de poder crear nuestros propios paquetes, más del 50% del código que utilizamos en cada programa no es realmente nuestro, sino que las estructuras más básicas se encuentran en algún paquete disponible públicamente. Por ejemplo, el paquete `java.util` para las colecciones, o `java.io` para el manejo de ficheros en la entrada-salida.
+
+Eclipse también pone a disposición de los desarrolladores sus propias librerías por medio del paquete `org.eclipse`. Dentro del mismo encontramos `org.eclipse.swt`. Estas librerías no se encuentran en el propio compilador de Java, como las anteriormente mencionadas, sino que se tienen que instalar manualmente.
+
+---
+
 ### 5. CÓMO INSTALARLO
 
 Si queremos hacer uso de SWT en nuestro proyecto, tenemos que importar manualmente las dependencias, ya que el código no se encuentra en las dependencias del propio lenguaje.
@@ -70,8 +69,8 @@ Si queremos hacer uso de SWT en nuestro proyecto, tenemos que importar manualmen
 5. Pulsamos `Apply` y todo debería estar listo.
 
 ---
+
 **EJECUTAR AQUÍ EL PRIMER EJEMPLO DE HOLA MUNDO**
----
 
 ---
 
@@ -106,25 +105,14 @@ Button checkBox = new Button(shell, SWT.CHECK);
 ```
 
 ---
+
 **MOSTRAR EJEMPLO DEL BOTÓN QUIT**
----
-
-Esto no se por que no funciona.
-```Un apunte sobre el programa anterior: vamos a aprovechar para introducir los mnemónicos. Estos son atajos de teclado que activan un widget de la aplicación, si este lo soporta. Los _labels_, _buttons_ y _menu items_ permiten su uso.
-
-Un mnemónico se crea añadiendo el carácter `&` al título del widget, delante de la letra que queremos que haga las veces de mnemónico. Por ejemplo, voy a hacerlo sobre el ejemplo anterior. Si al establecer el título del botón le añadimos el símbolo ampersand al inicio, podremos disparar las acciones del botón mediante un atajo de teclado: `CTRL+Q` en Windows y Linux, y `CMD+Q` en el caso de Mac.```
-
-
-```java
-Button quitBtn = new Button(shell, SWT.PUSH);
-quitBtn.setText("&Quit");
-```
 
 ---
 
 ### 7. CREANDO APLICACIONES INTERACTIVAS CON SWT
 
-**BUEN MOMENTO PARA QUE AQUÍ SERGIO PRESENTE SU PROGRAMA CON TODOS LOS ELEMENTOS EN UNA VENTANA, PARA IR ENSEÑÁNDOLOS**
+**EJEMPLO CON TODOS LOS ELEMENTOS EN UNA VENTANA, PARA IR ENSEÑÁNDOLOS**
 
 ---
 
@@ -137,7 +125,9 @@ Evidentemente, establecerle un _layout_ a un botón no es precisamente útil, ya
 `Shell`, la ventana, es un ejemplo de `Composite`, que no tiene un _layout_ definido por defecto, sino que si no se especifica, realiza posicionamiento absoluto. Este viene a ser un posicionamiento manual, a pelo, indicando directamente la posición del widget dentro de la interfaz mediante píxeles. Esto hace que, al redimensionar la ventana, los widgets no cambien de posición, y nos deja sin garantías ningunas de que la aplicación luzca igual de bien en diferentes plataformas. Además, una simple modificación como el cambiar la fuente ya puede dejar la interfaz patas arriba. Por ello, es un tipo de posicionamiento que no suele utilizarse, salvo que estés desarrollando un ejemplo puntual o algo así. Se utilizan los métodos `setSize()`, `setLocation()` y `setBounds()`.
 
 ---
+
 **EJEMPLO DE POSICIONAMIENTO ABSOLUTO**
+
 ---
 
 * **FillLayout**
@@ -145,7 +135,9 @@ Evidentemente, establecerle un _layout_ a un botón no es precisamente útil, ya
 Este tipo de estructura es la más simple y divide el espacio disponible de forma igualitaria para todos los widgets. Puede repartirles el espacio de forma horizontal, usando el _stylebit_ `SWT.HORIZONTAL`, o verticalmente (`SWT.VERTICAL`). También permite especificar la separación entre los widgets mediante su atributo `spacing` y el margen de los mismos con respecto al contenedor con los atributos `marginWidth` y `marginHeight`.
 
 ---
+
 **EJEMPLO DE FILLLAYOUT**
+
 ---
 
 Antes de seguir con las otras tres distribuciones que vamos a ver, tenemos que revisar el concepto de _layout data_. En SWT, cada widget que incluyamos en nuestra interfaz puede tener una serie de ajustes específicos para su posicionamiento, por medio de objetos que podemos asociarles. Estos objetos son los _layout data_ y tenemos varios. Por ejemplo, para el GridLayout, que ahora lo veremos, tenemos los objetos GridData. Podemos definir el posicionamiento del widget, su orientación dentro de la sección que ocupa, los márgenes que tiene con respecto a otros elementos...
@@ -155,8 +147,11 @@ Antes de seguir con las otras tres distribuciones que vamos a ver, tenemos que r
 Esta distribución es muy similar a `FillLayout`, en el sentido de que distribuye los componentes en una fila (`SWT.HORIZONTAL`) o en una columna (`SWT.VERTICAL`). La diferencia está en que no reparte necesariamente el espacio de forma equitativa entre sus elementos, sino que nos da la posibilidad de manejar diversos parámetros para que cada widget tenga las dimensiones, margen y separación que deseemos. Estos parámetros se manejan utilizando objetos RowData que se asocian a los widgets.
 
 ---
+
 **EJEMPLO DE ROWLAYOUT**
+
 ---
+
 
 * **GridLayout**
 
@@ -167,8 +162,8 @@ El GridLayout ya lo conocemos de SWING, aunque este no es exactamente el mismo. 
 Por último, tenemos `FormLayout`, una distribución bastante útil que permite relacionar anclar a cada widget en posiciones determinadas del espacio de su contenedor. Para hacer esto, se crean lo que se llaman objetos `FormAttachment` y se asocian a los parámetros de los FormData.
 
 ---
+
 **EXPLICAR USANDO EL EJEMPLO DE FORMLAYOUT**
----
 
 ---
 
@@ -183,22 +178,5 @@ Por último, tenemos `FormLayout`, una distribución bastante útil que permite 
 ---
 
 ### 11. EJEMPLO FINAL
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
