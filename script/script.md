@@ -93,7 +93,17 @@ while (!shell.isDisposed()) {
 display.dispose();
 ```
 
-El resto de widgets de una forma similar a los contenedores y elementos principales que hemos visto en SWING, pero se construyen indicando cuál es el widget "padre" que los contiene. SWING, en cambio, define directamente sus elementos y luego introduce unos dentro de otros. El único widget que no tiene que especificar a su padre al ser definido es `Display`, pues su padre siempre es el sistema operativo.
+---
+
+**MOSTRAR EJEMPLO DEL BOTÓN QUIT**
+
+---
+
+### 7. CREANDO APLICACIONES INTERACTIVAS CON SWT
+
+**EJEMPLO CON TODOS LOS ELEMENTOS EN UNA VENTANA, PARA IR ENSEÑÁNDOLOS**
+
+El resto de widgets son similares a los contenedores y elementos principales que hemos visto en SWING, pero se construyen indicando cuál es el widget "padre" que los contiene. SWING, en cambio, define directamente sus elementos y luego introduce unos dentro de otros. El único widget que no tiene que especificar a su padre al ser definido es `Display`, pues su padre siempre es el sistema operativo.
 
 Entonces, cada vez que se define un determinado widget, su primer parámetro debe ser el widget que lo va a contener. El segundo parámetro hace referencia a los llamados `stylebits`. Estos, dependiendo del valor que tomen, le otorgan al widget una apariencia y comportamiento diferente. Los valores vienen predefinidos como constantes públicas de la clase SWT.
 
@@ -104,15 +114,7 @@ Button pushButton = new Button(shell, SWT.PUSH);
 Button checkBox = new Button(shell, SWT.CHECK);
 ```
 
----
-
-**MOSTRAR EJEMPLO DEL BOTÓN QUIT**
-
----
-
-### 7. CREANDO APLICACIONES INTERACTIVAS CON SWT
-
-**EJEMPLO CON TODOS LOS ELEMENTOS EN UNA VENTANA, PARA IR ENSEÑÁNDOLOS**
+**VOLVEMOS AL EJEMPLO ANTERIOR PARA EXPLICAR UN POCO MEJOR LOS STYLEBITS**
 
 ---
 
@@ -157,6 +159,12 @@ Esta distribución es muy similar a `FillLayout`, en el sentido de que distribuy
 
 El GridLayout ya lo conocemos de SWING, aunque este no es exactamente el mismo. Este es propio del paquete de `swt`, pero la idea es exactamente la misma: distribuir los elementos en una matriz con un número de filas y columnas dado. Además, disponemos de algunos parámetros extra para hacer que un determinado widget ocupe más de una celda, y el múltiples direcciones.
 
+---
+
+**EXPLICAR USANDO EL EJEMPLO DE LA CALCULADORA**
+
+---
+
 * **FormLayout**
 
 Por último, tenemos `FormLayout`, una distribución bastante útil que permite relacionar anclar a cada widget en posiciones determinadas del espacio de su contenedor. Para hacer esto, se crean lo que se llaman objetos `FormAttachment` y se asocian a los parámetros de los FormData.
@@ -167,13 +175,24 @@ Por último, tenemos `FormLayout`, una distribución bastante útil que permite 
 
 ---
 
-### 9. UN EJEMPLO UN POCO MÁS COMPLICADO
+### 9. LOS DIALOGS
 
-**MOSTRAMOS EL EJEMPLO DEL CONVERSOR DE MONEDAS**
+Los _dialogs_ son elementos indispensables en las interfaces de usuario modernas. Un diálogo por sí solo se define como una conversación, y en una aplicación no deja de ser algo muy parecido. Se trata de una ventana que "dialoga" con la aplicación para importar o exportar datos, sobre todo. Son, por tanto, uno de los elementos más importantes para la comunicación entre el usuario, el programa y los datos externos al programa.
+
+* **LOS MESSAGEBOX**
+* **DIRECTORY DIALOG**
+* **COLOR DIALOG**
+* **FILE DIALOG**
+
+---
+
+**MOSTRAMOS EL EJEMPLO DEL CLUB DE FANS DE ZIDANE**
 
 ---
 
 ### 10. PROGRAMACIÓN ORIENTADA A EVENTOS CON SWT
+
+
 
 ---
 
