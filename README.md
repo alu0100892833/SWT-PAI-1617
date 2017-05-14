@@ -1,9 +1,8 @@
 ## STANDARD WIDGET TOOLKIT
 
-### AUTHORS
+### AUTHOR
 
 * Óscar Darias Plasencia, alu0100892833
-* Sergio García de la Iglesia, alu0100892260
 
 ### REFERENCES
 
@@ -13,3 +12,4 @@
 * [Eclipse Documentation about SWT](https://www.eclipse.org/swt/)
 * [ZetCode Tutorial](http://zetcode.com/gui/javaswt/)
 * [SWT vs SWING](https://www.slideshare.net/saratorkey/swt-vs-swing)
+* [Java2s](http://www.java2s.com)

@@ -93,6 +93,8 @@ while (!shell.isDisposed()) {
 display.dispose();
 ```
 
+Es muy importante mencionar que en SWT el método `dispose` es fundamental y se utiliza con la mayoría de objetos que se crean para la interfaz. Como vemos, debería ser invocado sobre los objetos `display` cuando estos van a dejar de utilizarse, y lo mismo ocurre con los objetos de imagen, gráficos, etc.
+
 ---
 
 **MOSTRAR EJEMPLO DEL BOTÓN QUIT**
@@ -187,12 +189,38 @@ Los _dialogs_ son elementos indispensables en las interfaces de usuario modernas
 ---
 
 **MOSTRAMOS EL EJEMPLO DEL CLUB DE FANS DE ZIDANE**
+**DE PASO EXPLICAMOS LAS IMÁGENES**
+
+---
+
+### 10. GRAPHICS
+
+El paquete `org.eclipse.swt.graphics` contiene todas las clases que permiten el manejo de gráficos. Estos pueden dibujarse sobre cualquier objeto que implemente la interfaz `Drawable`, lo cual incluye a la clase `Control`, padre de un buen número de widgets de SWT. Por su parte, la clase Graphics Context (GC), encapsula toda la API de dibujo de gráficos, y por tanto es la que define los métodos para dibujar líneas y formas geométricas. La gran mayoría de las veces, en SWT se dibuja por medio de eventos `PaintEvent`, que son captados por los `PaintListener`.
+
+Dibujar en una imagen es extremadamente sencillo: únicamente creamos un objeto `GC`, pasándole al constructor como argumento el objeto `Image` sobre el que vamos a dibujar. A partir de ahí, cuando utilicemos dicho objeto `GC` para dibujar, el resultado se mostrará en la imagen. Al igual que con todo tipo de recursos en SWT, es importante liberar los recursos tanto de la imagen como de los gráficos, usando en ambos objetos el método `dispose`. 
+
+Dibujar sobre un objeto `Control`, como puede ser el caso de las `Shell`, también se puede hacer de la misma forma que con las imágenes, pero hay que tener en cuenta que cuando el sistema operativo redibuje la ventana, sobreescribirá tus cambios y los gráficos dibujados desaparecerán. Esto no ocurre con las imágenes porque estas directamente se modifican cuando dibujamos sobre ellas. Entonces, la forma más correcta de dibujar sobre los objetos `Control` es estableciendo un listener que responda a los eventos PaintEvent.
+
+El método que hay que sobreescribir es el método `paintControl`. El objeto que recibe como argumento, `PaintEvent`, incluye un objeto `GC` como atributo, que es sobre el que se debe dibujar. Es un funcionamiento en parte similar al de SWING. La diferencia es que en SWING, internamente, un manejador de eventos predefinido invoca a la función `paintComponent`.
+
+La clase `GC` pone a disposición del desarrollador prácticamente los mismos métodos que la clase `Graphics` de SWING: `drawOval`, `drawLine`, `drawPolygon`...
+
+También deberíamos mencionar la clase `Canvas`. Los objetos de esta clase están diseñados específicamente para llevar a cabo operaciones gráficas. Podrían verse como un contenedor específico para dibujar gráficos. Tienen algunos `stylebits` que pueden ser utilizados para especificarr cómo se deben pintar los gráficos exactamente. Por ejemplo, el bit `NO_REDRAW_RESIZE` evita que se genere un `PaintEvent` cuando la ventana es redimensionada, y el gráfico se queda tal y como está. 
 
 ---
 
 ### 10. PROGRAMACIÓN ORIENTADA A EVENTOS CON SWT
 
+La programación orientada a eventos en SWT, para un desarrollador que viene de utilizar AWT o SWING, no es un problema, ya que se proporcionan formas exactamente iguales de crear objetos `Listener` para manejar eventos. La única diferencia está en que estos _listeners_ y eventos son objetos de la librería de `SWT`, aunque muchos se llaman exactamente igual y tienen métodos exactamente iguales.
 
+Sin embargo, en SWT, existen dos tipos de listeners:
+
+* Listeners no tipeados. Estos proporcionan una forma simple, rápida y a bajo nivel de manejar eventos. Utilizarlos puede reducir considerablemente la cantidad de código a escribir. El tipo de evento al que responden se especifica por medio de un `stylebit`.
+* Listeners tipeados. Estos son los mismos que existen en SWING, pero propios de SWT (derivan de `TypedEvent`). Existe uno para cada tipo de evento, y el utilizarlos hace que el diseño de la aplicación termine siendo bastante más modular, gracias a que se pueden reutilizar fácilmente. 
+
+En un principio, en SWT sólo existían los listeners no tipeados, ya que se buscaba establecer una forma simple de manejar eventos, sin necesidad de tener demasiadas clases diferentes. Sin embargo, tras un tiempo considerable de discusión entre los responsables del proyecto y la comunidad, se decidió incluir también los listeners tipeados. El objetivo era que la transición a SWT para los desarrolladores acostumbrados a AWT o a SWING fuera mucho más sencilla. 
+
+Unos desarrolladores apoyan más a los tipeados y otros a los no tipeados, un clásico debate entre facilidad de uso y estandarización. Utilizando no tipeados, se puede minimizar el número de clases y métodos necesarios para manejar eventos, ya que el mismo listener puede utilizarse para manejar diferentes tipos de eventos. 
 
 ---
 
