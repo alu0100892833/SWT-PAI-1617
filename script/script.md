@@ -207,6 +207,8 @@ La clase `GC` pone a disposición del desarrollador prácticamente los mismos m�
 
 También deberíamos mencionar la clase `Canvas`. Los objetos de esta clase están diseñados específicamente para llevar a cabo operaciones gráficas. Podrían verse como un contenedor específico para dibujar gráficos. Tienen algunos `stylebits` que pueden ser utilizados para especificarr cómo se deben pintar los gráficos exactamente. Por ejemplo, el bit `NO_REDRAW_RESIZE` evita que se genere un `PaintEvent` cuando la ventana es redimensionada, y el gráfico se queda tal y como está. 
 
+**MOSTRAR EL EJEMPLO DEL CÍRCULO**
+
 ---
 
 ### 10. PROGRAMACIÓN ORIENTADA A EVENTOS CON SWT
