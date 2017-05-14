@@ -28,13 +28,13 @@ import org.eclipse.swt.widgets.Text;
  * @author Óscar Darias Plasencia
  * @since 7-5-2017
  */
-public class ComplexLayout { 
+public class ZidaneFanClub { 
 	 
 	Image personalImage; 		/* Personal image of the fan (needs to be loaded by the user) */
 	Text fanNameText; 			/* The text box for the user to introduce its name */
 	Combo bornPlaceCombo;    	/* A Combo object with a few countries to indicate the place of birth */
 	Canvas fanPhoto; 			/* The graphics to draw the loaded photo */
-	List fanCategories;			/* A list of categories to clasify the fan */
+	List fanCategories;			/* A list of categories to classify the fan */
 	Text mailText;				/* The text box for the user to introduce its email */
 	Text phoneText;				/* The text box for the user to introduce its phone number */
 
@@ -259,7 +259,7 @@ public class ComplexLayout {
 	 */
 	public static void main(String[] args) {
 		Display display = new Display();
-		Shell shell = new ComplexLayout().createShell(display);
+		Shell shell = new ZidaneFanClub().createShell(display);
 		shell.open();
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch())
