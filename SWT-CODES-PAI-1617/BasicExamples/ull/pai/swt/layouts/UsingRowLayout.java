@@ -7,9 +7,17 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-
+/**
+ * Example of how to use RowLayout to create interfaces with SWT.
+ * @author Óscar Darias Plasencia 
+ * @since 2-5-2017
+ */
 public class UsingRowLayout {
 
+	/**
+	 * Constructor that builds the main window.
+	 * @param display The Display object father of the shell.
+	 */
     public UsingRowLayout(Display display) { 
         Shell shell = new Shell(display);
 

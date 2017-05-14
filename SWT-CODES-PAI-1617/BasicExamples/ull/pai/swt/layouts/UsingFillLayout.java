@@ -18,12 +18,16 @@ public class UsingFillLayout {
         FillLayout layout = new FillLayout();
         layout.marginHeight = 5;
         layout.marginWidth = 5;
+        layout.spacing = 50;
         shell.setLayout(layout);
         
         loadImage(shell);
 
         Label label = new Label(shell, SWT.IMAGE_PNG);
         label.setImage(infoPicture);
+        
+        Label textLabel = new Label(shell, SWT.NONE);
+        textLabel.setText("Otro elemento");
         
         shell.setText("FillLayout");        
         shell.pack();

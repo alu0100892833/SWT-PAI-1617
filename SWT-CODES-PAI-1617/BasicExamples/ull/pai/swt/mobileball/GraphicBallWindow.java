@@ -16,6 +16,11 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.graphics.Rectangle;
 
+/**
+ * Class that creates a SWT interface for the mobile ball.
+ * @author Óscar Darias Plasencia
+ * @since 11-5-2017
+ */
 public class GraphicBallWindow {
 	private final int PANEL_WIDTH = 700;
     private final int PANEL_HEIGHT = 700;
@@ -23,12 +28,16 @@ public class GraphicBallWindow {
     private final int MOVING_DISTANCE = 40;
     private final int RED_RGB = 255;
     
-    private Shell window;
-    private Composite buttonsSpace;
-    private Button upButton, leftButton, downButton, rightButton;
-    private GraphicBall ball;
+    private Shell window;						/* The main shell */
+    private Composite buttonsSpace;				/* The space for the buttons */
+    private Button upButton, leftButton, downButton, rightButton;   /* The buttons that move the ball */
+    private GraphicBall ball;					/* The model for the ball */
 	
 	
+    /**
+     * Constructor that creates the entire layout and adds the listeners to the buttons.
+     * @param parent The Display object, parent of the Shell.
+     */
 	public GraphicBallWindow(Display parent) {
 		window = new Shell(parent);
 		window.setLayout(new FormLayout());
@@ -42,6 +51,7 @@ public class GraphicBallWindow {
 		setButtonsListeners();
 		setSpaceListener();
 		
+		// Event loop
 		window.open();
 		while (!window.isDisposed()) {
             if (!window.getDisplay().readAndDispatch()) {
@@ -55,74 +65,54 @@ public class GraphicBallWindow {
 		return buttonsSpace;
 	}
 
-
-
 	public void setButtonsSpace(Composite buttonsSpace) {
 		this.buttonsSpace = buttonsSpace;
 	}
-
-
 
 	public Button getUpButton() {
 		return upButton;
 	}
 
-
-
 	public void setUpButton(Button upButton) {
 		this.upButton = upButton;
 	}
-
-
 
 	public Button getLeftButton() {
 		return leftButton;
 	}
 
-
-
 	public void setLeftButton(Button leftButton) {
 		this.leftButton = leftButton;
 	}
-
-
 
 	public Button getDownButton() {
 		return downButton;
 	}
 
-
-
 	public void setDownButton(Button downButton) {
 		this.downButton = downButton;
 	}
-
-
 
 	public Button getRightButton() {
 		return rightButton;
 	}
 
-
-
 	public void setRightButton(Button rightButton) {
 		this.rightButton = rightButton;
 	}
 
-
-
 	public GraphicBall getBall() {
 		return ball;
 	}
-
-
 
 	public void setBall(GraphicBall ball) {
 		this.ball = ball;
 	}
 
 
-
+	/**
+	 * Creates the buttons and situates them in the layout.
+	 */
 	private void setButtons() {
 		buttonsSpace = new Composite(window, SWT.NONE);
 		buttonsSpace.setLayout(new FormLayout());
@@ -171,7 +161,9 @@ public class GraphicBallWindow {
 	}
 	
 	
-	
+	/**
+	 * Sets the painting listener for painting the ball.
+	 */
 	private void setSpaceListener() {
 		window.addPaintListener(new PaintListener() {
 			@Override
@@ -182,7 +174,10 @@ public class GraphicBallWindow {
 		});
 	}
 	
-	
+	/**
+	 * Sets untyped listener for each button.
+	 * Each one moves the ball depending on the pressed button.
+	 */
 	private void setButtonsListeners() {
 		upButton.addListener(SWT.MouseDown, new Listener() {
 			@Override

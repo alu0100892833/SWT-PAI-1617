@@ -9,16 +9,29 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-
+/**
+ * Quick example of a directory dialog. 
+ * @author Óscar Darias Plasencia
+ * @since 5-5-2017
+ */
 public class DirectoryDialogExample {  
 
     private Shell window;
     private Label pathToDirectory; 
 
+    /**
+     * Constructor.
+     * @param display
+     */
     public DirectoryDialogExample(Display display) {
         initUI(display);
     }
 
+    /**
+     * Initializes the UI with an almost empty window.
+     * If the background is clicked, calls onMouseDown.
+     * @param display
+     */
     private void initUI(Display display) {
         window = new Shell(display, SWT.SHELL_TRIM | SWT.CENTER);
 
@@ -47,6 +60,9 @@ public class DirectoryDialogExample {
         }
     }
 
+    /**
+     * Opens a directory dialog and then writes the selected path in the main shell.
+     */
     private void onMouseDown() {
         DirectoryDialog dialog = new DirectoryDialog(window);
         String path = dialog.open();

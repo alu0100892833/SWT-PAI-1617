@@ -7,7 +7,11 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-
+/**
+ * Quick example of a file dialog.
+ * @author Óscar Darias Plasencia
+ * @since 5-5-2017
+ */
 public class FileDialogExample { 
 	private static final String[] FILTER_NAMES = {
 			"Java sources", "All Files (*)"
@@ -19,10 +23,18 @@ public class FileDialogExample {
     private Shell window;  
     private Label pathLabel;
 
+    /**
+     * Constructor.
+     * @param display
+     */
     public FileDialogExample(Display display) {
         initUI(display);
     }
 
+    /**
+     * Initializes an empty background. When it is clicked, calls onMouseDown.
+     * @param display
+     */
     private void initUI(Display display) {
         window = new Shell(display);
 
@@ -49,6 +61,10 @@ public class FileDialogExample {
         }
     }
     
+    /**
+     * Opens a file dialog with the predefined filter names and filter extensions.
+     * Writes the selected file´s path.
+     */
     private void onMouseDown() {
         FileDialog dialog = new FileDialog(window, SWT.OPEN);
 
